@@ -1,0 +1,58 @@
+import java.util.Scanner;
+import java.lang.*;
+import java.util.*; 
+
+public class Source
+{
+    // Code here
+    public  static int getMaxDigit(String stringParam)
+    {
+        //if(stringParam.equals(empty) || stringParam.equals(nullString))
+        if(stringParam.isEmpty() || stringParam == null)
+            return -1;
+        else
+        {
+            char[] stringParamArray = stringParam.toCharArray();
+            int[] digits = new int[stringParam.length()];
+            int i = 0;
+            for (char c: stringParamArray)
+            {
+                if(Character.isDigit(c))
+                {
+                    digits[i] = Character.getNumericValue(c);
+                    i++;
+                
+                }
+                
+            }
+            int max = digits[0];
+            for(int j = 1; j<i; j++)
+            {
+                if(digits[j]>max)
+                    max = digits[j];
+            }
+            if(i!=0)
+                return max;
+            else 
+                return -1;
+        }
+    }
+    
+    public static void main(String[] args)
+    {
+        //Code here
+        Scanner s = new Scanner(System.in);
+        String userString = s.nextLine();
+        if(userString.isEmpty() || userString == null)
+            System.out.println("No digits in string");
+        else
+        {
+        int maxDigit = getMaxDigit(userString);
+        if(maxDigit!=-1)
+            System.out.println(maxDigit);
+        else 
+            System.out.println("No digits in string");
+            
+        }
+    }
+}
