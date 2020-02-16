@@ -1,0 +1,63 @@
+Write a function that accepts a String sentence as argument and returns a List<String> containing the words from the String input. The List should be sorted based on the length. The word with the least length should be on the top. In case if two words have the same length, then they are arranged alphabatically in ascending order.
+
+
+
+
+
+
+import java.util.*;
+import java.io.*;
+//import statements here
+public class Source {
+    //CODE HERE
+    
+   public static List<String> sort(String strParam) throws NullPointerException
+   {
+        List<String> listVar = new ArrayList<String>();
+       String[] words = strParam.split(" ", 0);
+      
+       int i, j;
+       
+       String temp = words[0];
+       for(i = 0; i<words.length + 1; i++)
+       {
+           for(j = i + 1; j<words.length; j++)
+           {
+                if (words[i].length() > words[j].length()) 
+                {
+                    temp = words[i];
+                    words[i] = words[j];
+                    words[j] = temp;
+                }
+                else if (words[i].length() == words[j].length()) 
+                {
+                    if(words[i].compareTo(words[j])>0)
+                    {
+                        temp = words[i];
+                        words[i] = words[j];
+                        words[j] = temp;   
+                    }
+                }
+           }
+       }
+       for(String word:words)
+            listVar.add(word);
+       return listVar;
+   }
+    
+    
+    
+	public static void main(String[] args) {
+	Scanner s = new Scanner(System.in);
+	String strVar = "";
+	while (s.hasNextLine()){
+	    strVar = s.nextLine();
+	}
+    strVar.trim();
+	strVar = strVar.replaceAll("\\s+"," ");
+	List<String> sortList = sort(strVar);
+	System.out.println(sortList);
+	    
+	    
+	}
+}
