@@ -1,0 +1,58 @@
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.*;
+
+
+class AgeCalculator
+{
+    int[] calculateAge(String dateParam)
+    {
+        int[] age = new int[2];
+        Date date = new Date();
+        int year = 2019;
+        int month = 04;
+        SimpleDateFormat format=new SimpleDateFormat("dd/MM/yyyy"); 
+        Date userDate = new Date();
+        try{
+             userDate = format.parse(dateParam);  
+        }
+        catch (Exception e) {
+ 
+        }
+        
+        int yearParam = userDate.getYear() + 1900;
+        int monthParam = userDate.getMonth() + 1;
+        int dayParam = userDate.getDate() + 1;
+        if(yearParam>=2019 && monthParam>=04 && dayParam>=01)
+            return null;
+        else{
+            age[0] = Math.abs(year - yearParam);
+            age[1] = Math.abs(monthParam - month);
+            return age;
+                
+        }
+        
+    }
+}
+
+public class Source{
+    public static void main(String[] args)
+    {
+        int[] ageCalc = new int[2];
+        Scanner s = new Scanner(System.in);
+        AgeCalculator a = new AgeCalculator();
+        ageCalc = a.calculateAge(s.nextLine());
+        
+        if(ageCalc==null)
+            System.out.println("Invalid date of birth");
+        if(ageCalc[0]==0)
+            System.out.println("Months : " + ageCalc[1]);
+        else if(ageCalc[1]==0)
+            System.out.println("Years : " + ageCalc[0]);
+        else
+            System.out.println("Years : " + ageCalc[0]  + ", Months : " + ageCalc[1]);
+                
+    }
+}
