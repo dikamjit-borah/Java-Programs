@@ -1,4 +1,6 @@
-Write a function that accepts a String sentence as argument and returns a List<String> containing the words from the String input. The List should be sorted based on the length. The word with the least length should be on the top. In case if two words have the same length, then they are arranged alphabatically in ascending order.
+/*Write a function that accepts a String sentence as argument and returns a List<String> containing the words from the String input. 
+The List should be sorted based on the length. The word with the least length should be on the top. 
+In case if two words have the same length, then they are arranged alphabatically in ascending order. */
 
 
 
@@ -53,7 +55,7 @@ public class Source {
 	while (s.hasNextLine()){
 	    strVar = s.nextLine();
 	}
-    strVar.trim();
+    	strVar.trim();
 	strVar = strVar.replaceAll("\\s+"," ");
 	List<String> sortList = sort(strVar);
 	System.out.println(sortList);
