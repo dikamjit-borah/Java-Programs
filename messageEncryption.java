@@ -46,15 +46,20 @@ public class Source
                 string.setCharAt(i, ((char)((int)c + 1 )));
             }
             
-            else
+          else
             {
-            		if((message.charAt(i + 1) == 'a')||(message.charAt(i + 1) == 'e')||(message.charAt(i + 1) == 'i')||(message.charAt(i + 1) == 'o')||(message.charAt(i + 1) == 'u'))
+            		if(
+            		    (char)((int)c + 1) == 'a')||
+            		    (char)((int)c + 1) == 'e')||
+            		    (char)((int)c + 1) == 'i')||
+            		    (char)((int)c + 1) == 'o')||
+            		    (char)((int)c + 1) == 'u'))
             		{
-            			 string.setCharAt(i, (char)((int)c + 1));
+            			 string.setCharAt(i, (char)((int)c + 2));
             		}
             		else
             		{
-                        string.setCharAt(i, (char)((int)c + 2));
+                        string.setCharAt(i, (char)((int)c + 1));
             		}
             }
           
