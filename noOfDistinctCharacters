@@ -1,0 +1,93 @@
+import java.util.Scanner;
+
+
+class Source 
+{
+    public static int getUniqueCharacterCount(String stringParam) 
+    {
+        int count = 0;
+        char[] stringParamArray = stringParam.toCharArray();
+        char[] noDup = new char[stringParam.length()];
+        noDup[0] = stringParamArray[0];
+        //String noDup = Character.toString(stringParamArray[0]);
+      
+    
+            for(int i = 0; i<=stringParam.length()-1; i++)
+            {
+                for(int j = 0; j<=noDup.length - 1 ; )
+                {
+                    if(stringParamArray[i] == stringParamArray[j])
+                    {
+                        j++;
+                        break;
+                    }
+                    else if(stringParamArray[i] != stringParamArray[j])
+                    {
+                       j++;
+                    }
+                    if(j<=noDup.length - 1)
+                    {
+                        noDup[j] = stringParamArray[i];
+                    }
+                }
+            }
+            
+            System.out.println(new String(noDup));
+        if (count == 0)
+            return -1;
+        else
+            return count;
+    }
+    
+    public static void main(String[] args)
+    {
+        Scanner s = new Scanner(System.in);
+        int noc = getUniqueCharacterCount(s.nextLine());
+        
+        System.out.println(noc + " unique characters");
+        
+    }
+}
+
+
+
+//no of distinct letters
+import java.util.Scanner;
+class Source 
+{
+    public static int getUniqueCharacterCount(String stringParam) 
+    {
+        int count = 0;
+        stringParam = stringParam.toLowerCase();
+        char[] stringParamArray = stringParam.toCharArray();
+      int j, i;
+    
+            for(i = 0; i<stringParam.length()-1; i++)
+            {
+                for(j = 0; j<i; j++)
+                {
+                    if(stringParamArray[i] == stringParamArray[j])
+                    {
+                        break;
+                    }
+                }
+                if(i == j)
+                    count++;
+            }
+        if (count == 0)
+            return -1;
+        else
+            return count;
+    }
+    
+    public static void main(String[] args)
+    {
+        Scanner s = new Scanner(System.in);
+        int noc = getUniqueCharacterCount(s.nextLine());
+        if (noc != -1)
+            System.out.println(noc + " unique character\'s");
+        else 
+            System.out.println("No unique character\'s");
+        
+    }
+}
