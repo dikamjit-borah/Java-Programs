@@ -85,7 +85,7 @@ class ContactService
         contactsArray[io_contactsArray] = contact;
         io_contactsArray++;
     }
-    Contacts searchContact(String nam) throws ContactsNotFoundException
+    Contacts searchContacts(String nam) throws ContactsNotFoundException
     {
         for(int i = 0; i<contactsArray.length; i++)
         {
@@ -98,7 +98,7 @@ class ContactService
        }
        throw new ContactsNotFoundException("Contact not found");
     }
-    Contacts searchContact(long mobileNumbe) throws ContactsNotFoundException
+    Contacts searchContacts(long mobileNumbe) throws ContactsNotFoundException
     {
         for(int i = 0; i<contactsArray.length; i++)
         {
@@ -140,7 +140,7 @@ class InvalidEmailIdException extends Exception
 // Class name should be "Source",
 // otherwise solution won't be accepted
 public class Source {
-	public static void main(String args[] ) throws Exception {
+	public static void main(String args[] ) throws ContactsNotFoundException,  InvalidEmailIdException,  InvalidMobileNumberException{
 		/* Enter your code here. Read input from STDIN. Print output to STDOUT */
 		int index = 0;
 		Scanner s1 = new Scanner(System.in);
@@ -162,7 +162,7 @@ public class Source {
 		}
 		
 		try{
-		    System.out.println(cc.searchContact((918494651l)));
+		    System.out.println(cc.searchContacts((918494651l)));
 		    
 		}
 		catch(Exception e){System.out.println(e.getMessage());}
