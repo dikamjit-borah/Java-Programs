@@ -47,10 +47,10 @@ class Contacts extends ContactService
     }
 
     
-    public void mobileNumber_setter(long mobileNumber) throws ContactsNotFoundException
+    public void mobileNumber_setter(long mobileNumber) throws ContactsNotFountException
     {
         if(String.valueOf(mobileNumber).length()<10){
-            throw new ContactsNotFoundException("Mobile number is not Valid");
+            throw new ContactsNotFountException("Mobile number is not Valid");
             
         }
         this.mobileNumber = mobileNumber;
@@ -68,9 +68,9 @@ class Contacts extends ContactService
     }
 
 }
-class ContactsNotFoundException extends Exception
+class ContactsNotFountException extends RuntimeException
 {
-    ContactsNotFoundException(String s)
+    ContactsNotFountException(String s)
     {
         super(s);
     }
@@ -85,7 +85,7 @@ class ContactService
         contactsArray[io_contactsArray] = contact;
         io_contactsArray++;
     }
-    Contacts searchContacts(String nam) throws ContactsNotFoundException
+    Contacts searchContacts(String nam) throws ContactsNotFountException
     {
         for(int i = 0; i<contactsArray.length; i++)
         {
@@ -96,9 +96,9 @@ class ContactService
                 }
                
        }
-       throw new ContactsNotFoundException("Contact not found");
+       throw new ContactsNotFountException("Contact not found");
     }
-    Contacts searchContacts(long mobileNumbe) throws ContactsNotFoundException
+    Contacts searchContacts(long mobileNumbe) throws ContactsNotFountException
     {
         for(int i = 0; i<contactsArray.length; i++)
         {
@@ -109,7 +109,7 @@ class ContactService
                 }
                
        }
-       throw new ContactsNotFoundException("Contact not found");
+       throw new ContactsNotFountException("Contact not found");
     }
     
   
@@ -121,7 +121,7 @@ class ContactService
     }
 }
 
-class InvalidMobileNumberException extends Exception
+class InvalidMobileNumberException extends RuntimeException
 {
     InvalidMobileNumberException(String s)
     {
@@ -129,7 +129,7 @@ class InvalidMobileNumberException extends Exception
     }
 }
 
-class InvalidEmailIdException extends Exception
+class InvalidEmailIdException extends RuntimeException
 {
     InvalidEmailIdException(String s)
     {
@@ -140,7 +140,7 @@ class InvalidEmailIdException extends Exception
 // Class name should be "Source",
 // otherwise solution won't be accepted
 public class Source {
-	public static void main(String args[] ) throws ContactsNotFoundException,  InvalidEmailIdException,  InvalidMobileNumberException{
+	public static void main(String args[] ) throws ContactsNotFountException,  InvalidEmailIdException,  InvalidMobileNumberException{
 		/* Enter your code here. Read input from STDIN. Print output to STDOUT */
 		int index = 0;
 		Scanner s1 = new Scanner(System.in);
@@ -160,12 +160,6 @@ public class Source {
 		   c.mobileNumber_setter(mobileLong);
 		   cc.addContacts(c);
 		}
-		
-		try{
-		    System.out.println(cc.searchContacts((918494651l)));
-		    
-		}
-		catch(Exception e){System.out.println(e.getMessage());}
 		
 	}
 }
